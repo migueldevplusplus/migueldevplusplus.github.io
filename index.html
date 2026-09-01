@@ -25,7 +25,7 @@
 <title>Miguel Mora — Desarrollador de software | Pedidos por WhatsApp</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   /* ─────────────────────────────────────────────────────────────
      Paleta: una sola, oscura. El sitio no sigue el tema del
@@ -54,6 +54,7 @@
        desbordar. Los sustitutos son los pesados que ya trae el
        sistema, para que el salto al cargar la fuente no descoloque. */
     --display: "Anton", "Haettenschweiler", "Arial Narrow Bold", Impact, sans-serif;
+    --code: "JetBrains Mono", "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   }
 
   * { box-sizing: border-box; }
@@ -85,7 +86,7 @@
   img { max-width: 100%; }
 
   .mono {
-    font-family: "Cascadia Code", "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-family: var(--code);
     font-variant-numeric: tabular-nums;
   }
 
@@ -240,8 +241,12 @@
     margin-bottom: 16px;
   }
   .hero h1 {
-    font-size: clamp(56px, 10.5vw, 104px);
-    line-height: .9;
+    font-family: var(--code);
+    font-weight: 700;
+    font-size: clamp(38px, 6.6vw, 72px);
+    text-transform: none;
+    letter-spacing: -.045em;
+    line-height: 1.02;
   }
   /* El oficio vuelve a la tipografía de texto: si tambien fuera Anton
      competiria con el nombre en vez de acompañarlo. */
@@ -471,7 +476,7 @@
        en una esquina, con el resto del ancho vacío. */
     .hero-inner { flex-direction: column; align-items: center; text-align: center; gap: 26px; }
     .portrait { width: 124px; height: 124px; border-radius: 18px; }
-    .hero h1 { font-size: clamp(52px, 15vw, 76px); }
+    .hero h1 { font-size: clamp(31px, 11.4vw, 48px); }
     .pitch { font-size: 16.5px; margin: 16px auto 0; }
 
     /* Botones a todo el ancho: en pantalla angosta dos pastillas sueltas
@@ -596,7 +601,7 @@
     <div class="wrap">
       <div class="section-head reveal">
         <span class="label mono">Trabajos</span>
-        <h2>Negocios reales</h2>
+        <h2>Algunos ejemplos</h2>
       </div>
 
       <article class="project reveal reveal-group">
