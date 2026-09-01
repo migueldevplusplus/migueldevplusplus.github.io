@@ -23,6 +23,9 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://migueldevplusplus.github.io/foto.webp">
 <title>Miguel Mora — Desarrollador de software | Pedidos por WhatsApp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 <style>
   /* ─────────────────────────────────────────────────────────────
      Paleta: una sola, oscura. El sitio no sigue el tema del
@@ -46,6 +49,11 @@
 
     --radius: 14px;
     --ease: cubic-bezier(.22,.61,.36,1);
+
+    /* Anton es condensada y pesada: dice la frase en grande sin
+       desbordar. Los sustitutos son los pesados que ya trae el
+       sistema, para que el salto al cargar la fuente no descoloque. */
+    --display: "Anton", "Haettenschweiler", "Arial Narrow Bold", Impact, sans-serif;
   }
 
   * { box-sizing: border-box; }
@@ -61,7 +69,18 @@
     overflow-x: hidden;
   }
 
-  h1, h2, h3 { margin: 0; text-wrap: balance; letter-spacing: -.02em; }
+  /* Los titulares van en Anton y en mayúsculas: es donde se apoya todo
+     el mensaje, para que se entienda de un vistazo sin leer parrafos.
+     Anton ya es muy cerrada, asi que abre un pelo el interletrado. */
+  h1, h2, h3 {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .012em;
+    line-height: .96;
+    text-wrap: balance;
+  }
   p { margin: 0; text-wrap: pretty; }
   img { max-width: 100%; }
 
@@ -221,17 +240,21 @@
     margin-bottom: 16px;
   }
   .hero h1 {
-    font-size: clamp(40px, 7vw, 62px);
-    font-weight: 700;
-    line-height: 1.02;
+    font-size: clamp(56px, 10.5vw, 104px);
+    line-height: .9;
   }
+  /* El oficio vuelve a la tipografía de texto: si tambien fuera Anton
+     competiria con el nombre en vez de acompañarlo. */
   .hero .role {
     display: block;
+    font-family: -apple-system, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
     font-size: clamp(17px, 2.6vw, 21px);
     font-weight: 600;
-    color: var(--jade);
+    text-transform: none;
     letter-spacing: -.01em;
-    margin-top: 12px;
+    line-height: 1.3;
+    color: var(--jade);
+    margin-top: 14px;
   }
   .pitch {
     font-size: clamp(16.5px, 2.2vw, 18.5px);
@@ -251,21 +274,21 @@
   .metrics > div { padding: 30px 26px; border-left: 1px solid var(--line-soft); }
   .metrics > div:first-child { border-left: none; padding-left: 0; }
   .metrics .n {
-    font-size: 30px;
-    font-weight: 700;
+    font-family: var(--display);
+    font-size: clamp(46px, 6.5vw, 68px);
+    font-weight: 400;
     color: var(--jade);
-    line-height: 1.1;
-    letter-spacing: -.03em;
+    line-height: .92;
+    letter-spacing: .01em;
   }
-  .metrics .t { font-size: 13.5px; color: var(--ink-soft); margin-top: 6px; }
+  .metrics .t { font-size: 14px; color: var(--ink-soft); margin-top: 10px; max-width: 22ch; }
 
   /* ── secciones ────────────────────────────────────── */
   .section { padding: 82px 0; border-bottom: 1px solid var(--line-soft); }
   .section-head { margin-bottom: 44px; }
   .section-head h2 {
-    font-size: clamp(27px, 4.2vw, 38px);
-    font-weight: 700;
-    margin-top: 14px;
+    font-size: clamp(38px, 7vw, 72px);
+    margin-top: 16px;
   }
   .section-head .lede { font-size: 16.5px; color: var(--ink-soft); margin-top: 14px; max-width: 54ch; }
 
@@ -286,8 +309,8 @@
     display: block;
     margin-bottom: 16px;
   }
-  .step h3 { font-size: 16.5px; font-weight: 650; margin-bottom: 8px; }
-  .step p { font-size: 14.5px; color: var(--ink-soft); }
+  .step h3 { font-size: clamp(26px, 3.4vw, 34px); color: var(--jade); margin-bottom: 12px; }
+  .step p { font-size: 15px; color: var(--ink-soft); }
 
   /* ── proyectos ────────────────────────────────────── */
   .project {
@@ -366,8 +389,8 @@
      universidad no lo está, así que lleva la versión sin punto. */
   .badge-alt { color: var(--ink-soft); background: var(--surface); border-color: var(--line); }
   .badge-alt::before { display: none; }
-  .project-body h3 { font-size: clamp(23px, 3.2vw, 29px); font-weight: 700; margin-bottom: 12px; }
-  .project-body .desc { font-size: 16px; color: var(--ink-soft); max-width: 52ch; }
+  .project-body h3 { font-size: clamp(34px, 5.2vw, 52px); margin-bottom: 14px; }
+  .project-body .desc { font-size: 16.5px; color: var(--ink-soft); max-width: 34ch; }
 
   .project-body .go { margin-top: 24px; }
 
@@ -383,8 +406,8 @@
     pointer-events: none;
   }
   .closing .wrap { position: relative; }
-  .closing h2 { font-size: clamp(29px, 5vw, 44px); font-weight: 700; max-width: 17ch; line-height: 1.08; margin-top: 16px; }
-  .closing .sub { font-size: 17px; color: var(--ink-soft); max-width: 50ch; margin-top: 18px; }
+  .closing h2 { font-size: clamp(42px, 8vw, 84px); max-width: 14ch; margin-top: 18px; }
+  .closing .sub { font-size: 17.5px; color: var(--ink-soft); max-width: 38ch; margin-top: 20px; }
   .closing-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
 
   footer { border-top: 1px solid var(--line-soft); padding: 26px 0 34px; }
@@ -448,7 +471,7 @@
        en una esquina, con el resto del ancho vacío. */
     .hero-inner { flex-direction: column; align-items: center; text-align: center; gap: 26px; }
     .portrait { width: 124px; height: 124px; border-radius: 18px; }
-    .hero h1 { font-size: clamp(36px, 11vw, 48px); }
+    .hero h1 { font-size: clamp(52px, 15vw, 76px); }
     .pitch { font-size: 16.5px; margin: 16px auto 0; }
 
     /* Botones a todo el ancho: en pantalla angosta dos pastillas sueltas
@@ -530,15 +553,15 @@
     <section class="metrics reveal reveal-group">
       <div>
         <div class="n mono">0%</div>
-        <div class="t">Comisión por pedido: el menú es del negocio</div>
+        <div class="t">De comisión. El menú es tuyo</div>
       </div>
       <div>
         <div class="n mono">0</div>
-        <div class="t">Apps que instalar, para ti y para tu cliente</div>
+        <div class="t">Apps que instalar</div>
       </div>
       <div>
         <div class="n mono">24/7</div>
-        <div class="t">Tu carta disponible, aunque el local esté cerrado</div>
+        <div class="t">Tu carta, siempre abierta</div>
       </div>
     </section>
   </div>
@@ -548,23 +571,22 @@
       <div class="section-head reveal">
         <span class="label mono">Cómo funciona</span>
         <h2>Un enlace. Nada que descargar.</h2>
-        <p class="lede">Tu cliente abre el menú desde el teléfono, arma su pedido y lo envía. Tú lo recibes completo, listo para preparar.</p>
       </div>
       <div class="steps reveal reveal-group">
         <div class="step">
-          <span class="num mono">01 / CATÁLOGO</span>
-          <h3>Tu carta, siempre al día</h3>
-          <p>Fotos, precios en dólares y en bolívares, categorías y buscador. Cambias un precio o marcas algo agotado y se ve al instante.</p>
+          <span class="num mono">01</span>
+          <h3>Tu carta</h3>
+          <p>Fotos y precios en $ y Bs. La cambias tú, cuando quieras.</p>
         </div>
         <div class="step">
-          <span class="num mono">02 / PEDIDO</span>
-          <h3>El cliente arma su orden</h3>
-          <p>Elige productos, personaliza lo que aplique y decide si lo retira o se lo llevan. Ve el total antes de confirmar.</p>
+          <span class="num mono">02</span>
+          <h3>Su pedido</h3>
+          <p>Elige, personaliza y ve el total antes de confirmar.</p>
         </div>
         <div class="step">
-          <span class="num mono">03 / WHATSAPP</span>
-          <h3>Llega listo a tu chat</h3>
-          <p>El pedido entra a tu WhatsApp ya redactado, con productos, cantidades, total y datos de entrega. Sin intermediarios.</p>
+          <span class="num mono">03</span>
+          <h3>Tu WhatsApp</h3>
+          <p>Llega escrito y completo. Sin intermediarios.</p>
         </div>
       </div>
     </div>
@@ -574,8 +596,7 @@
     <div class="wrap">
       <div class="section-head reveal">
         <span class="label mono">Trabajos</span>
-        <h2>Algunos ejemplos, funcionando hoy</h2>
-        <p class="lede">Una muestra de lo que hay en línea ahora mismo. Cada negocio tiene su propia carta y su propia forma de trabajar.</p>
+        <h2>Negocios reales</h2>
       </div>
 
       <article class="project reveal reveal-group">
@@ -587,7 +608,7 @@
         <div class="project-body">
           <p class="badge mono">Funcionando hoy</p>
           <h3>King Kebab</h3>
-          <p class="desc">Shawarmas, platos árabes y hamburguesas en una sola carta. Filtros por tipo de plato, horario de atención en vivo y pedido directo a WhatsApp con delivery en Puerto Ordaz.</p>
+          <p class="desc">Shawarmas, platos árabes y hamburguesas en una sola carta.</p>
           <p class="go"><a class="btn btn-ghost" href="https://kingkebabpzo.pages.dev" target="_blank" rel="noopener noreferrer">Ver el sitio →</a></p>
         </div>
       </article>
@@ -601,7 +622,7 @@
         <div class="project-body">
           <p class="badge mono">Funcionando hoy</p>
           <h3>Quotidiano</h3>
-          <p class="desc">Café de especialidad y cocina de autor. La carta más extensa del grupo: desayunos, entradas, ensaladas, pastas y repostería, con buscador para encontrar un plato sin recorrer todo el menú.</p>
+          <p class="desc">Café de especialidad y cocina de autor. La carta más extensa, con buscador.</p>
           <p class="go"><a class="btn btn-ghost" href="https://quotidianopzo.pages.dev" target="_blank" rel="noopener noreferrer">Ver el sitio →</a></p>
         </div>
       </article>
@@ -615,7 +636,7 @@
         <div class="project-body">
           <p class="badge mono">Funcionando hoy</p>
           <h3>El Patio</h3>
-          <p class="desc">Comida rápida con platos que el cliente personaliza: elige sus acompañantes antes de agregarlos al carrito. Decide si lo recibe en casa o lo retira, y el pedido llega completo al WhatsApp del negocio.</p>
+          <p class="desc">Comida rápida. El cliente arma su plato y elige si lo retira o se lo llevan.</p>
           <p class="go"><a class="btn btn-ghost" href="https://elpatiopzo.pages.dev" target="_blank" rel="noopener noreferrer">Ver el sitio →</a></p>
         </div>
       </article>
@@ -629,7 +650,7 @@
         <div class="project-body">
           <p class="badge mono">Funcionando hoy</p>
           <h3>Darxus</h3>
-          <p class="desc">El mismo sistema adaptado a otro negocio de comida rápida: combos, hamburguesas y salchipapas, con aviso automático cuando el local está cerrado para que nadie pida fuera de horario.</p>
+          <p class="desc">Combos, hamburguesas y salchipapas. Avisa solo cuando el local cierra.</p>
           <p class="go"><a class="btn btn-ghost" href="https://darxus-pzo-menu.pages.dev" target="_blank" rel="noopener noreferrer">Ver el sitio →</a></p>
         </div>
       </article>
@@ -642,7 +663,7 @@
         <div class="project-body">
           <p class="badge badge-alt mono">Proyecto de universidad</p>
           <h3>Farmahumana</h3>
-          <p class="desc">Plataforma de venta y gestión de medicamentos. Trabajé en equipo, a cargo de la arquitectura de datos: cómo se organiza, se guarda y se consulta la información del sistema.</p>
+          <p class="desc">Venta y gestión de medicamentos. En equipo, a cargo de la arquitectura de datos.</p>
           <p class="go"><a class="btn btn-ghost" href="https://thankful-ocean-0c273f10f.7.azurestaticapps.net/" target="_blank" rel="noopener noreferrer">Ver la plataforma →</a></p>
         </div>
       </article>
@@ -653,7 +674,7 @@
     <div class="wrap">
       <span class="label mono">Siguiente paso</span>
       <h2>¿Quieres uno así para tu negocio?</h2>
-      <p class="sub">Cuéntame qué vendes y cómo tomas los pedidos hoy. Reviso tu caso y te digo por el mismo chat qué necesitarías y cuánto tomaría.</p>
+      <p class="sub">Cuéntame qué vendes. Te digo qué necesitas y cuánto toma.</p>
       <div class="closing-cta">
         <a class="btn btn-primary" href="https://wa.me/584121314493" target="_blank" rel="noopener noreferrer">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.13h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.21-8.24 8.21Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.02s.87 2.34.99 2.51c.12.16 1.71 2.61 4.15 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
